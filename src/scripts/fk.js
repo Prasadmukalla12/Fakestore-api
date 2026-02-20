@@ -72,7 +72,6 @@
         })
         .then(function(product){
             mycart.push(product)
-            alert(`added an item`)
             cartsymbol()
         })
        }
@@ -81,23 +80,41 @@
        
         document.querySelector("tbody").innerHTML=""
         
-        mycart.map(function(product){
+        mycart.map(function(product,i){
             var tr=document.createElement("tr")
                 var tdtitle=document.createElement("td")
                 var tdpreview=document.createElement("td")
                 var tdprice=document.createElement("td")
+                var tdaction = document.createElement("td")
+                var tdbutton = document.createElement("button")
 
+                tdbutton.onclick = function(i){
+                    removeItem(i)
+                }
+
+                tdaction.className = "text-center"
+                tdbutton.className = "btn btn-danger bi bi-trash"
                 tdtitle.innerHTML=product.title
                 tdpreview.innerHTML=`<img src=${product.image} height="50" width="50">`
                 tdprice.innerHTML=product.price
+                tdbutton.className = "btn btn-danger bi bi-trash"
 
                 tr.appendChild(tdtitle)
                 tr.appendChild(tdpreview)
                 tr.appendChild(tdprice)
+                tdaction.appendChild(tdbutton)
+                tr.appendChild(tdaction)
                 document.querySelector("tbody").appendChild(tr)
            })
            for(var item of mycart){
             total += item.price
            }
-           document.getElementById("price").innerHTML=`${total}`
+           document.getElementById("price").innerHTML=`${total.toFixed(2)}`
        }
+
+       function removeItem(index){
+          mycart.splice(index,1)
+          cartsymbol()
+          total = 0
+          showcartitems()
+}
