@@ -26,8 +26,8 @@
                 div.className="card p-2 m-3"
                 div.style.width="250px"
                 div.innerHTML=`
-                <img class="card-img-top" src=${product.image} height="200">
-                <div class="card-header overflow-auto" style="height:100px;">
+                <img class="card-img-top" src=${product.image} height="150">
+                <div class="card-header overflow-auto" style="height:60px;">
                     ${product.title}
                     </div>
                 <div class="card-body">
@@ -35,9 +35,7 @@
                     <dt>Price :</dt>
                     <dd>${product.price.toLocaleString("en-in",{style:"currency",currency:"INR"})}</dd>
                     <dt>Rating :</dt>
-                    <dd>${product.rating.rate} <span class="bi bi-star-fill text-success"></span></dd>
-                    <dt>Count :</dt>
-                    <dd><span class="bi bi-person-fill text-secondary"></span> ${product.rating.count}</dd>     
+                    <dd>${product.rating.rate} <span class="bi bi-star-fill text-success"></span></dd> 
                     </dl>
                     </div>
                 <div class="card-footer">
